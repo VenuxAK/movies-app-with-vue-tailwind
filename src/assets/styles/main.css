@@ -1,1 +1,7 @@
-
+html {
+    max-zoom: 1;
+    min-zoom: 1;
+}
+body {
+    @apply bg-gray-900 text-white relative overflow-x-hidden w-screen h-screen;
+}

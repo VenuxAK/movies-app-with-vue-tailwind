@@ -4,7 +4,7 @@ import { ref } from "vue";
 export const useMoviesStore = defineStore("moviesStore", () => {
     let movies = ref([]);
 
-    let fetchMovie = async () => {};
+    let fetchMovies = async () => {};
 
-    return { movies, fetchMovie };
+    return { movies, fetchMovies };
 });
