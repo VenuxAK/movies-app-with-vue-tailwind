@@ -1,7 +1,9 @@
 <script setup>
 import Loading from "../Loading.vue";
 let props = defineProps(["movie"]);
+let img_db = "https://image.tmdb.org/t/p/w500";
 let movie = props.movie;
+// console.log(movie);
 </script>
 
 <template>
@@ -9,10 +11,10 @@ let movie = props.movie;
         <div class="flex flex-col">
             <div>
                 <div class="overflow-hidden">
-                    <div v-if="true">
-                        <router-link to="#">
+                    <div v-if="movie.poster_path">
+                        <router-link :to="'/movie/' + movie.id">
                             <img
-                                src="https://imgs.search.brave.com/I7wwvi8VhC8_HLKkbvKi6dAIJui71JSaPPpm7u0YcX4/rs:fit:320:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5H/cDRJZ2VEWng0aDdC/TDFVUlU3OURBSGFL/LSZwaWQ9QXBp"
+                                :src="img_db + movie.poster_path"
                                 alt=""
                                 class="movie-poster"
                             />
@@ -23,8 +25,10 @@ let movie = props.movie;
                     </div>
                 </div>
                 <div class="text-gray-500 text-base">
-                    <h1 class="truncate">Stranger Things</h1>
-                    <p>2022-2-2</p>
+                    <h1 class="truncate">
+                        {{ movie.title || movie.name }}
+                    </h1>
+                    <p>{{ movie.release_date }}</p>
                 </div>
             </div>
         </div>
