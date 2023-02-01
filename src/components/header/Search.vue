@@ -1,15 +1,34 @@
-<script setup></script>
+<script setup>
+import { ref, onMounted,watch } from "vue";
+import { useRouter } from "vue-router";
+
+let router = useRouter();
+let query = ref("");
+
+let searchMovie = () => {
+    router.push(`/movies/search=${query.value}`);
+};
+
+// watch()
+
+</script>
 
 <template>
     <div class="basis-1/2 md:basis-1/3">
         <div class="flex items-center justify-end space-x-2">
             <div class="relative">
-                <input
-                    type="text"
-                    class="rounded-full focus:outline-none text-gray-700 pl-8 pr-2 py-1 w-full"
-                    placeholder="Search..."
-                />
-                <span class="text-gray-400 absolute top-1 left-2">
+                <form @submit.prevent="searchMovie">
+                    <input
+                        type="text"
+                        class="rounded-full focus:outline-none text-gray-700 pr-8 pl-3 py-2 w-full"
+                        placeholder="Search..."
+                        v-model="query"
+                    />
+                </form>
+                <span
+                    class="text-gray-500 absolute top-2 right-3 cursor-pointer"
+                    @click="searchMovie"
+                >
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
             </div>

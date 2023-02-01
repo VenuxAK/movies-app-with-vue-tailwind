@@ -24,7 +24,7 @@ moviesStore
     .fetchAboutMovie(route.params.id)
     .then((_movie) => {
         movie.value = _movie;
-        console.log(movie.value);
+        // console.log(movie.value);
     })
     .then(() => {
         video.value = `https://youtu.be/${movie.value.videos.results[0].key}`;

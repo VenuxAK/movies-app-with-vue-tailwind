@@ -18,5 +18,12 @@ export const useMoviesStore = defineStore("moviesStore", () => {
         return movie.value;
     };
 
-    return { movies, fetchMovies, fetchAboutMovie };
+    let searchMovies = async (query) => {
+        let url = `/search/movie?query=${query}`;
+        let response = await api.get(url);
+        movies.value = await response.data.results;
+        return movies.value;
+    };
+
+    return { movies, fetchMovies, fetchAboutMovie, searchMovies };
 });
