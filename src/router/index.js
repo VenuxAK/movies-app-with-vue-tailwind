@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import MoviesView from "../views/MoviesView.vue";
 import AboutMovieView from "../views/AboutMovieView.vue";
 import ActorsView from "../views/ActorsView.vue";
+import ActorDetailView from "../views/ActorDetailView.vue";
 import ProfileView from "../views/ProfileView.vue";
 import SearchMovieView from "../views/SearchMovieView.vue";
 
@@ -36,6 +37,11 @@ const router = createRouter({
             path: "/actors",
             name: "actors",
             component: ActorsView,
+        },
+        {
+            path: "/actor/:id",
+            name: "actor_detail",
+            component: ActorDetailView,
         },
         {
             path: "/profile",

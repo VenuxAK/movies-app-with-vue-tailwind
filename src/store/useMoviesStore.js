@@ -25,5 +25,34 @@ export const useMoviesStore = defineStore("moviesStore", () => {
         return movies.value;
     };
 
-    return { movies, fetchMovies, fetchAboutMovie, searchMovies };
+    let fetchPopularPeople = async (page) => {
+        let url = `/person/popular?page=${page}`;
+        let response = await api.get(url);
+        let data = await response.data.results;
+        return data;
+    };
+
+    let fetchActorDetail = async (id) => {
+        let url = `/person/${id}`;
+        let response = await api.get(url);
+        let data = await response.data;
+        return data;
+    };
+
+    let fetchActorMovies = async (id) => {
+        let url = `/person/${id}/movie_credits`;
+        let response = await api.get(url);
+        let data = await response.data;
+        return data;
+    };
+
+    return {
+        movies,
+        fetchMovies,
+        fetchAboutMovie,
+        searchMovies,
+        fetchPopularPeople,
+        fetchActorDetail,
+        fetchActorMovies,
+    };
 });
