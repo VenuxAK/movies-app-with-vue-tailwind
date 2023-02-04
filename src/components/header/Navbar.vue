@@ -3,7 +3,7 @@ import { ref } from "vue";
 import Search from "./Search.vue";
 
 let openMenu = ref(false);
-let body = document.querySelector("body");
+let isMenuOpen = ref(false);
 
 let toggleMenu = (bool) => {
     if (bool) {
@@ -67,9 +67,24 @@ let toggleMenu = (bool) => {
                 <router-link to="/profile" class="nav-link">
                     Profile
                 </router-link>
+                <hr class="border border-gray-600" />
+                <router-link to="/profile" class="nav-link">
+                    Account Settings
+                </router-link>
+                <router-link to="/profile" class="nav-link">
+                    Support
+                </router-link>
+                <router-link to="/profile" class="nav-link">
+                    Logout
+                </router-link>
             </div>
         </div>
     </div>
+    <div
+        v-if="openMenu"
+        class="w-full h-full fixed top-0 left-0 bottom-0 bg-black opacity-70"
+        @click="openMenu = false"
+    ></div>
 </template>
 
 <style>
