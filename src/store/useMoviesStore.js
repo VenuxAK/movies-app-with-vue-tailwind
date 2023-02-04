@@ -46,6 +46,13 @@ export const useMoviesStore = defineStore("moviesStore", () => {
         return data;
     };
 
+    let fetchUpcomingMovies = async () => {
+        let url = `/movie/upcoming?page=1`;
+        let response = await api.get(url);
+        let data = await response.data.results;
+        return data;
+    };
+
     return {
         movies,
         fetchMovies,
@@ -54,5 +61,6 @@ export const useMoviesStore = defineStore("moviesStore", () => {
         fetchPopularPeople,
         fetchActorDetail,
         fetchActorMovies,
+        fetchUpcomingMovies,
     };
 });

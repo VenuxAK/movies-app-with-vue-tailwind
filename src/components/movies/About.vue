@@ -27,7 +27,9 @@ moviesStore
         // console.log(movie.value);
     })
     .then(() => {
-        video.value = `https://youtu.be/${movie.value.videos.results[0].key}`;
+        if (movie.value.videos.results.length > 0) {
+            video.value = `https://youtu.be/${movie.value.videos.results[0].key}`;
+        }
     })
     .then(() => {
         casts.value = movie.value.credits.cast;
@@ -101,7 +103,7 @@ moviesStore
     <div v-else>
         <Loading :ellipsis="true" />
     </div>
-    <div>
+    <div v-if="video">
         <FsLightbox :toggler="toggler" :sources="[video]" />
     </div>
 </template>
